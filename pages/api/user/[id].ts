@@ -8,8 +8,17 @@ export default async function handler(
 ) {
   const { id } = req.query;
 
+  // Handle CORS preflight request
+  if (req.method === 'OPTIONS') {
+    return res.status(200).end();
+  }
+
   if (req.method !== 'GET') {
     return res.status(405).json({ error: 'Method not allowed' });
+  }
+
+  if (!id || typeof id !== 'string') {
+    return res.status(400).json({ error: 'Invalid user ID' });
   }
 
   const { data, error } = await supabase

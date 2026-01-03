@@ -1,6 +1,6 @@
 // pages/api/properties/index.ts
 import { NextApiRequest, NextApiResponse } from 'next';
-import { supabase } from '@/lib/supabaseAdmin';
+import { supabaseAdmin } from '@/lib/supabaseAdmin';
 import { CreatePropertyInput } from '@/DATABASE_TYPES';
 
 export default async function handler(
@@ -11,7 +11,7 @@ export default async function handler(
     try {
       const body = req.body;
 
-      const { data, error } = await supabase
+      const { data, error } = await supabaseAdmin
         .from('properties')
         .insert(body)
         .select()

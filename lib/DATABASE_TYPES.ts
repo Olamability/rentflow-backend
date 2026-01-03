@@ -1,5 +1,41 @@
 // DATABASE_TYPES.ts
 
+// Database type for Supabase client
+export type Database = {
+  public: {
+    Tables: {
+      properties: {
+        Row: PropertyResponse;
+        Insert: CreatePropertyInput;
+        Update: UpdatePropertyInput;
+      };
+      units: {
+        Row: UnitResponse;
+        Insert: CreateUnitInput;
+        Update: Partial<CreateUnitInput>;
+      };
+      payments: {
+        Row: PaymentResponse;
+        Insert: CreatePaymentInput;
+        Update: Partial<CreatePaymentInput>;
+      };
+      maintenance_requests: {
+        Row: MaintenanceRequestResponse;
+        Insert: CreateMaintenanceRequestInput;
+        Update: Partial<CreateMaintenanceRequestInput>;
+      };
+      users: {
+        Row: UserResponse;
+        Insert: Partial<UserResponse>;
+        Update: Partial<UserResponse>;
+      };
+    };
+    Views: {};
+    Functions: {};
+    Enums: {};
+  };
+};
+
 export interface CreatePropertyInput {
   name: string;
   description: string;

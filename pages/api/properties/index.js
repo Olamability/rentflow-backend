@@ -1,7 +1,7 @@
 // pages/api/properties/index.ts
 import { NextApiRequest, NextApiResponse } from 'next';
 import { supabaseAdmin } from '@/lib/supabaseAdmin';
-import { CreatePropertyInput } from '@/DATABASE_TYPES';
+import { CreatePropertyInput } from '@/lib/DATABASE_TYPES';
 
 export default async function handler(
   req,
@@ -27,7 +27,7 @@ export default async function handler(
     }
   } else if (req.method === 'GET') {
     // Optional: return all properties
-    const { data, error } = await supabase.from('properties').select('*');
+    const { data, error } = await supabaseAdmin.from('properties').select('*');
     if (error) {
       return res.status(500).json({ error: error.message });
     }

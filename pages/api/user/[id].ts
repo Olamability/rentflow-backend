@@ -17,6 +17,10 @@ export default async function handler(
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
+  if (!id || typeof id !== 'string') {
+    return res.status(400).json({ error: 'Invalid user ID' });
+  }
+
   const { data, error } = await supabase
     .from('users')
     .select('*')

@@ -14,7 +14,7 @@ export default async function handler(req, res) {
       const { data, error } = await supabaseAdmin
         .from('properties')
         .select('*')
-        .limit(parseInt(limit));
+        .limit(parseInt(limit, 10));
 
       if (error) {
         return res.status(500).json({ error: error.message });
